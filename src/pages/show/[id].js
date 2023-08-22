@@ -48,4 +48,3 @@ const Show = () => {
 
 export default Show;
 
-//https://api.tvmaze.com/search/shows?q=batman

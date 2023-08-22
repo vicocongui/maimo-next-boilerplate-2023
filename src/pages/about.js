@@ -1,10 +1,14 @@
-import React from 'react';
+import Navbar from '@/components/Navbar';
+import AboutContainer from '@/containers/AboutContainer';
+import Footer from '@/components/Footer';
 
 const AboutPage = () => {
   return (
-    <div className='w-screen h-screen flex justify-center items-center'>
-      about
-    </div>
+    <>
+      <Navbar />
+      <AboutContainer />
+      <Footer />
+    </>
   );
 };
 
