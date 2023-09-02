@@ -6,4 +6,4 @@ function AboutContainer() {
   )
 }
 
-export default AboutContainer 
+export default AboutContainer;
