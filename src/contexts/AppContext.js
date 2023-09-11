@@ -19,7 +19,7 @@ export const AppContextProvider = ({ children }) => {
     setLoading(true);
     try {
       const showsReq = await axios.get(
-        `https://api.tvmaze.com/search/shows?q=batman`
+        `https://api.tvmaze.com/shows`
       );
       setShows(showsReq.data);
       setLoading(false);

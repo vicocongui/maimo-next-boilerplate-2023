@@ -1,14 +1,13 @@
-import React from 'react'
-import { useAppContext } from '@/contexts/AppContext'
+import React from "react";
+import { useAppContext } from "@/contexts/AppContext";
 
 const Navbar = () => {
-
   return (
-    <div className="w-full flex  px-10 text-black bg-gray-200 h-10 items-center justify-between fixed z-10">
+    <div className="w-full flex   px-10 text-white bg-gradient-to-b from-slate-700/80 h-20 items-center justify-between fixed z-20">
       <div>Logo</div>
-      <div>
+      <div className="">
         <button className="block lg:hidden">Hamburg</button>
-        <ul className="hidden lg:flex gap-2 ">
+        <ul className="hidden lg:flex gap-2  ">
           <li>
             <a href="#hero">Home</a>{" "}
           </li>
@@ -24,7 +23,7 @@ const Navbar = () => {
         </ul>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Navbar
+export default Navbar;
