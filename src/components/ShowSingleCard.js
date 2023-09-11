@@ -37,7 +37,7 @@ const ShowSingleCard = ({ show }) => {
     }
 
     console.log(resultFilter, "Result Filter");
-    setShowFiltrados(resultFilter);
+    setShowFiltrados(resultFilter.filter((serie) => serie.id != show.id));
   }, [shows]);
 
   return (
@@ -67,9 +67,8 @@ const ShowSingleCard = ({ show }) => {
       <section className="w-full h-[40vh]">
         <div className="w-[85%] mx-auto text-center h-full py-10 px-8">
           <h2 className="text-3xl mb-8 uppercase font-bold">Summary</h2>
-          <p>
-            {show.summary}
-          </p>
+          <div dangerouslySetInnerHTML = {{__html:show.summary}}>
+          </div>
         </div>
       </section>
       {/* Filtros */}
