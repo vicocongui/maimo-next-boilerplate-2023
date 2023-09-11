@@ -30,8 +30,8 @@ const CardsContainer = () => {
           >
             {shows.map((actualShow, index) => {
               return (
-                <SwiperSlide>
-                  <ShowCard actualShow={actualShow} key={index} />
+                <SwiperSlide key={index}>
+                  <ShowCard actualShow={actualShow}  />
                 </SwiperSlide>
               );
             })}
