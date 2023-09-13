@@ -1,9 +1,6 @@
 import ShowCard from "@/components/ShowCard";
 import { useAppContext } from "@/contexts/AppContext";
-import { useEffect, useState } from "react";
-import Carrousel from "@/components/Carrousel";
-
-
+import { useState, useEffect } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Pagination, Navigation } from "swiper/modules";
 
@@ -11,43 +8,34 @@ import { Autoplay, Pagination, Navigation } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
-
+import { Carrousel } from "@/components/Carrousel";
 
 const CardsContainer = () => {
   const { shows, loading } = useAppContext();
 
-  const [showDrama, setShowDrama] = useState([]);
-  const [showFiltroAnio, setShowFiltroAnio] = useState([]);
-  const [showFiltroMax2010, setShowFiltroMax2010] = useState([]);
+  const [showsDrama, setShowsDrama] = useState([]);
+  const [shows2023, setShows2023] = useState([]);
+  const [showsMax2010, setShowsMax2010] = useState([]);
 
   useEffect(() => {
-    /*Drama*/
-    const showDrama = shows.filter((el) => el.genres.includes("Drama"));
-    /*ended 2010*/
-    setShowFiltroMax2010(
-      shows.filter((shw)=>{
-        if(shw.ended){
-          const anios = new Date(shw.ended).getFullYear();
-          return   anios <=2010;
-        }
-        else false
-      })
-    )
-    /*año premiered*/
-    setShowFiltroAnio(
-      shows.filter((el)=>{
-        if(el.premiered){
-          const anio = new Date(el.premiered).getFullYear();
-          return  anio >= 2003
-        }
-        else false
-      })
-    )
+    const resultFilter = shows.filter((el) => el.genres.includes("Thriller"));
+    //show es showSeleccionado, show.genres mis generes seleccionados, .every todos mis generos tienen que cumplir ( => )
+    const shows2023Filter = shows.filter((shw) => shw.ended?.includes("2023"));
+    
+    const showsMax2010Filter = shows.filter((shw) => {
+      if (shw.ended) {
+        const year = new Date(shw.ended).getFullYear();
 
-    setShowDrama(showDrama);
+        return year <= 2010;
+      } else {
+        return false;
+      }
+    });
 
-  }, [shows])
-  
+    setShowsDrama(resultFilter);
+    setShows2023(shows2023Filter);
+    setShowsMax2010(showsMax2010Filter);
+  }, [shows]);
 
   return (
     <section>
@@ -58,11 +46,11 @@ const CardsContainer = () => {
 
           <div>Segundo Carrusel</div>
 
-          <Carrousel showsArray={showDrama} />
+          <Carrousel showsArray={showsDrama} />
           <div>Tercer Carrusel</div>
-          <Carrousel showsArray={showFiltroMax2010} />
+          <Carrousel showsArray={shows2023} />
           <div>Cuarto Carrusel max 2010</div>
-          <Carrousel showsArray={showFiltroAnio} />
+          <Carrousel showsArray={showsMax2010} />
         </div>
       )}
       {loading && <p>Loading...</p>}

@@ -3,28 +3,40 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Pagination, Navigation } from "swiper/modules";
 import ShowCard from "./ShowCard";
 
-const Carrousel = ({showsArray}) => {
+export const Carrousel = ({ showsArray }) => {
   return (
     <Swiper
-    slidesPerView={5}
-    spaceBetween={25}
-    autoplay={{
-      delay: 2500,
-      disableOnInteraction: false,
-    }}
-    navigation={true}
-    modules={[Pagination, Navigation, Autoplay]}
-    className="mySwiper"
-  >
-    {showsArray.map((actualShow, index) => {
-      return (
-        <SwiperSlide>
-          <ShowCard actualShow={actualShow} key={index} />
-        </SwiperSlide>
-      );
-    })}
-   </Swiper>
-  )
-}
-
-export default Carrousel
+      slidesPerView={1}
+      spaceBetween={20}
+      autoplay={{
+        delay: 2500,
+        disableOnInteraction: false,
+      }}
+      breakpoints={{
+        640: {
+          slidesPerView: 2,
+          spaceBetween: 20,
+        },
+        768: {
+          slidesPerView: 4,
+          spaceBetween: 20,
+        },
+        1024: {
+          slidesPerView: 5,
+          spaceBetween: 20,
+        },
+      }}
+      navigation={true}
+      modules={[Pagination, Navigation, Autoplay]}
+      className="mySwiper"
+    >
+      {showsArray.map((actualShow, index) => {
+        return (
+          <SwiperSlide>
+            <ShowCard actualShow={actualShow} key={index} />
+          </SwiperSlide>
+        );
+      })}
+    </Swiper>
+  );
+};
