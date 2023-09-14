@@ -44,12 +44,11 @@ const CardsContainer = () => {
         <div className="px-2 py-4">
           <Carrousel showsArray={shows} />
 
-          <div>Segundo Carrusel</div>
-
+          <div>Drama</div>
           <Carrousel showsArray={showsDrama} />
-          <div>Tercer Carrusel</div>
+          <div>Show que terminaron en 2023</div>
           <Carrousel showsArray={shows2023} />
-          <div>Cuarto Carrusel max 2010</div>
+          <div>Show que terminaron en 2010</div>
           <Carrousel showsArray={showsMax2010} />
         </div>
       )}

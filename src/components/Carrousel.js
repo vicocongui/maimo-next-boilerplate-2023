@@ -32,8 +32,8 @@ export const Carrousel = ({ showsArray }) => {
     >
       {showsArray.map((actualShow, index) => {
         return (
-          <SwiperSlide>
-            <ShowCard actualShow={actualShow} key={index} />
+          <SwiperSlide key={index}>
+            <ShowCard actualShow={actualShow}  />
           </SwiperSlide>
         );
       })}

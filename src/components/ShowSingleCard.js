@@ -9,6 +9,7 @@ import ShowCard from "./ShowCard";
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
+
 const ShowSingleCard = ({ show }) => {
   const { shows, loading } = useAppContext();
 

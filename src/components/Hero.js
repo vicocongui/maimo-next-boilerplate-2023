@@ -50,8 +50,8 @@ const Hero = () => {
         >
           {showsFiltrados.map((actualShow, index) => {
             return (
-              <SwiperSlide>
-                <HeroCard heroShow={actualShow} key={index} />
+              <SwiperSlide key={index}>
+                <HeroCard heroShow={actualShow}  />
               </SwiperSlide>
             );
           })}
