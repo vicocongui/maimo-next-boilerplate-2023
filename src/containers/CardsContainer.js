@@ -18,13 +18,13 @@ const CardsContainer = () => {
   const [showsMax2010, setShowsMax2010] = useState([]);
 
   useEffect(() => {
-    const resultFilter = shows.filter((el) => el.genres.includes("Thriller"));
+    const resultFilter = shows.filter((el) => el.genres.includes("Drama"));
     //show es showSeleccionado, show.genres mis generes seleccionados, .every todos mis generos tienen que cumplir ( => )
     const shows2023Filter = shows.filter((shw) => shw.ended?.includes("2023"));
     
     const showsMax2010Filter = shows.filter((shw) => {
       if (shw.ended) {
-        const year = new Date(shw.ended).getFullYear();
+        const year = new Date(shw.ended).getFullYear();//pasa de string a fecha y obtiene el año
 
         return year <= 2010;
       } else {
@@ -41,9 +41,8 @@ const CardsContainer = () => {
     <section>
       <h2>Shows</h2>
       {!loading && (
-        <div className="px-2 py-4">
+        <div className="mg-3 px-2 py-4">
           <Carrousel showsArray={shows} />
-
           <div>Drama</div>
           <Carrousel showsArray={showsDrama} />
           <div>Show que terminaron en 2023</div>

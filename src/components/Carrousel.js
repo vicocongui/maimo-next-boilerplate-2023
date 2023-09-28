@@ -2,7 +2,6 @@ import React from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Pagination, Navigation } from "swiper/modules";
 import ShowCard from "./ShowCard";
-
 export const Carrousel = ({ showsArray }) => {
   return (
     <Swiper
@@ -22,7 +21,7 @@ export const Carrousel = ({ showsArray }) => {
           spaceBetween: 20,
         },
         1024: {
-          slidesPerView: 5,
+          slidesPerView: 4,
           spaceBetween: 20,
         },
       }}
@@ -32,8 +31,8 @@ export const Carrousel = ({ showsArray }) => {
     >
       {showsArray.map((actualShow, index) => {
         return (
-          <SwiperSlide key={index}>
-            <ShowCard actualShow={actualShow}  />
+          <SwiperSlide>
+            <ShowCard actualShow={actualShow} key={index} />
           </SwiperSlide>
         );
       })}
