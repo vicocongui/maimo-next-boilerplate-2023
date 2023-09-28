@@ -126,8 +126,8 @@ const ShowSingleCard = ({ show }) => {
               {showsFiltrados.length > 0 &&
                 showsFiltrados.map((actualShow, index) => {
                   return (
-                    <SwiperSlide key={index}>
-                      <ShowCard actualShow={actualShow} />
+                    <SwiperSlide>
+                      <ShowCard  key={index} actualShow={actualShow} />
                     </SwiperSlide>
                   );
                 })}
