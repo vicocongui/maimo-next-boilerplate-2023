@@ -2,7 +2,7 @@ import React from "react";
 import Link from "next/link";
 import Image from "next/image";
 export const HeroCard = ({ heroShow }) => {
-  const { name, id, image } = heroShow;//destructuring
+  const { name, id, image } = heroShow;
   return (
     <div>
       <div className="w-full h-screen text-white flex flex-col justify-between relative border-solid">

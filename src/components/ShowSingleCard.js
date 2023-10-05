@@ -10,10 +10,9 @@ import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
 const ShowSingleCard = ({ show }) => {
-  //Ya no usariamos 'seasons' acá... asi que lo saqué
   const { shows, loading, getSeasons, episodesBySeason, getEpisodes } =
     useAppContext();
-
+  const [textLarge, setTextLarge] = useState(false);
   const [showsFiltrados, setShowFiltrados] = useState([]);
   console.log(show.genres, "Show Seleccionado");
 
@@ -97,24 +96,38 @@ const ShowSingleCard = ({ show }) => {
         </div>
       </section>
       {/* Summary */}
-      <section className="w-full h-[40vh]">
-        <div className="w-[85%] mx-auto text-center h-[40vh]  mt-8 overflow-y-scroll py-10 px-8">
-          <h2 className="text-3xl mb-8 uppercase font-bold">Summary</h2>
-          <div dangerouslySetInnerHTML={{ __html: show.summary }}></div>
+      <section className="w-full h-full ">
+        <div
+          className={`relative w-[85%] mx-auto text-center h-${
+            textLarge ? "full" : "[25vh] "
+          } overflow-hidden  mt-8  py-10 px-8  `}
+        >
+          <h2 className="text-3xl mb-8 uppercase font-bold ">Summary</h2>
+          <div
+            dangerouslySetInnerHTML={{ __html: show.summary }}
+            className=" "
+          ></div>
+
           <p>Termino en : {show.ended}</p>
+          {!textLarge && (
+            <div className="bg-gradient-to-t from-black to-blue-500/5 from-10% to-20% h-[25vh] absolute bottom-0 right-0 left-0 w-full"></div>
+          )}
         </div>
+        <div className="flex items-center text-center justify-center">
+        <button onClick={() => setTextLarge(!textLarge)}>Ver Mas...</button>
+        </div>
+        
       </section>
       {/* Filtros */}
       <section>
-        <h3 className="mt-8 px-10 text-4xl">Podría Interesarte</h3>
+        <h3 className="mx-3 mt-8 text-3xl">Podría Interesarte</h3>
 
         <section>
-          <h2>Shows</h2>
           {/* {!loading && ( */}
-          <div className="mg-5 px-2 py-4">
+          <div className="pl-4 pr-4 py-4">
             <Swiper
               slidesPerView={5}
-              spaceBetween={25}
+              spaceBetween={10}
               autoplay={{
                 delay: 2500,
                 disableOnInteraction: false,
@@ -126,53 +139,29 @@ const ShowSingleCard = ({ show }) => {
               {showsFiltrados.length > 0 &&
                 showsFiltrados.map((actualShow, index) => {
                   return (
-                    <SwiperSlide>
-                      <ShowCard  key={index} actualShow={actualShow} />
+                    <SwiperSlide key={index}>
+                      <ShowCard actualShow={actualShow} />
                     </SwiperSlide>
                   );
                 })}
             </Swiper>
           </div>
-          {/* Silencié esto un toque para probar este nuevo mapeo */}
-          {/* <div className="px-2 py-4">
-            <Swiper
-              slidesPerView={5}
-              spaceBetween={25}
-              autoplay={{
-                delay: 2500,
-                disableOnInteraction: false,
-              }}
-              navigation={true}
-              modules={[Pagination, Navigation, Autoplay]}
-              className="mySwiper"
-            >
-              {episodesBySeason.length > 0 && //[ [ 8 el],[ 8 el],[ 8 el],[ 8 el],[ 8 el],[ 8 el],[ 8 el], ]
-                episodesBySeason.map((episode, index) => {
-                  return (
-                    <SwiperSlide key={index}>
-                      <span>Temporada: - cap:{episode[index].name}</span>
-                    </SwiperSlide>
-                  );
-                })}
-            </Swiper>
-          </div> */}
+          
           {episodesBySeason.map((seasonEpisodes, index) => (
-            <div key={index}>
-              <h3>Temporada {index + 1}</h3>
+            <div key={index} className="pl-4 pr-4 py-4">
+              <h3 className="mx-3 mt-8 mb-8 text-3xl">Temporada {index + 1}</h3>
               <Swiper
-                modules={[Pagination, Navigation]}
+                modules={[Navigation]}
                 spaceBetween={10}
                 slidesPerView={4}
                 navigation
-                pagination={{ clickable: true }}
+               
               >
                 {seasonEpisodes.map((episode) => (
                   <SwiperSlide key={episode.id}>
-                    {/* Acá podemos renderizar cada episodio como prefieras */}
                     <div>
                       <h4>{episode.name}</h4>
                       <img src={episode.image?.medium} alt={episode.name} />
-                      {/* <p>{episode.summary}</p> */}
                     </div>
                   </SwiperSlide>
                 ))}
@@ -180,25 +169,12 @@ const ShowSingleCard = ({ show }) => {
             </div>
           ))}
 
-          {/* {loading && <p>Loading...</p>} */}
         </section>
       </section>
     </div>
   );
 };
 
-// Pendiente Filtrar por tipo de la serie actual. En un Swiper
 
 export default ShowSingleCard;
 
-{
-  /* <h2>{show.name}</h2>
-{show.image && (
-  <Image 
-    src={show.image?.original}
-    width={680}
-    height={1000}
-    alt={show.name}
-  />
-)} */
-}

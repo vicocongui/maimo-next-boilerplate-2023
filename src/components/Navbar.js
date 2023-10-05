@@ -1,28 +1,29 @@
 import React from "react";
 import { useAppContext } from "@/contexts/AppContext";
 import Link from "next/link";
+import { PiFilmReelFill } from "react-icons/pi";
+
 const Navbar = ({ btnBack }) => {
   return (
-    <div className="w-full flex   px-10 text-white bg-gradient-to-b from-slate-700/80 h-20 items-center justify-between fixed z-20">
+    <div className="w-full flex   px-10 text-blue bg-gradient-to-b from-slate-500/100 h-20 items-center justify-between fixed z-20">
       <Link href="/">
-        <div>Logo</div>
+        <div>  <PiFilmReelFill size='3em'/></div>
       </Link>
       {!btnBack && (
         <div className="">
           <button className="block lg:hidden">Hamburg</button>
           <ul className="hidden lg:flex gap-2  ">
             <li>
-              <Link href="#drama"> Drama</Link>
-            </li>
-
-            <li>
-              <Link href="#accion">About</Link>
+              <a href="#drama"> Drama</a>
             </li>
             <li>
-              <a href="#personajes">Personajes</a>
+              <a href="#ultimos"> Últimos</a>
             </li>
             <li>
-              <a href="#footer">Contact</a>
+              <a href="#oldies"> Oldies</a>
+            </li>
+            <li>
+              <Link href="/about">About</Link>
             </li>
           </ul>
         </div>

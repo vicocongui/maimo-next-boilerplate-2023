@@ -5,8 +5,8 @@ import ShowCard from "./ShowCard";
 export const Carrousel = ({ showsArray }) => {
   return (
     <Swiper
-      slidesPerView={1}
-      spaceBetween={20}
+      slidesPerView={2}
+      spaceBetween={9}
       autoplay={{
         delay: 2500,
         disableOnInteraction: false,
@@ -31,8 +31,8 @@ export const Carrousel = ({ showsArray }) => {
     >
       {showsArray.map((actualShow, index) => {
         return (
-          <SwiperSlide>
-            <ShowCard actualShow={actualShow} key={index} />
+          <SwiperSlide key={index}>
+            <ShowCard actualShow={actualShow} />
           </SwiperSlide>
         );
       })}

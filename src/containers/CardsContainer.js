@@ -39,15 +39,15 @@ const CardsContainer = () => {
 
   return (
     <section>
-      <h2>Shows</h2>
+      <h2 className="mx-3 mt-8 text-4xl">Shows</h2>
       {!loading && (
-        <div className="mg-3 px-2 py-4">
+        <div className="ml-4 mr-4 px-2 py-4">
           <Carrousel showsArray={shows} />
-          <div>Drama</div>
+          <div id="drama" className="mx-3 mt-8 text-3xl" >Drama</div>
           <Carrousel showsArray={showsDrama} />
-          <div>Show que terminaron en 2023</div>
+          <div id="ultimos" className="mx-3 mt-8 text-3xl" >Show que terminaron en 2023</div> 
           <Carrousel showsArray={shows2023} />
-          <div>Show que terminaron en 2010</div>
+          <div id="oldies" className="mx-3 mt-8 text-3xl" >Show que terminaron en 2010</div>
           <Carrousel showsArray={showsMax2010} />
         </div>
       )}
