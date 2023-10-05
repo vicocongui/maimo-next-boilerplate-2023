@@ -2,6 +2,7 @@ import React from "react";
 import { useAppContext } from "@/contexts/AppContext";
 import Link from "next/link";
 import { PiFilmReelFill } from "react-icons/pi";
+import { GiHamburgerMenu } from "react-icons/gi";
 
 const Navbar = ({ btnBack }) => {
   return (
@@ -11,7 +12,7 @@ const Navbar = ({ btnBack }) => {
       </Link>
       {!btnBack && (
         <div className="">
-          <button className="block lg:hidden">Hamburg</button>
+          <button className="block lg:hidden"><GiHamburgerMenu size='3em'/></button>
           <ul className="hidden lg:flex gap-2  ">
             <li>
               <a href="#drama"> Drama</a>
@@ -30,7 +31,7 @@ const Navbar = ({ btnBack }) => {
       )}
       {btnBack && (
         <Link href="/">
-          <button>Back</button>
+          <button className="font-bold text-xl">Back</button>
         </Link>
       )}
     </div>
